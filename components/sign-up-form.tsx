@@ -19,6 +19,7 @@ import { cn } from "@/lib/shadcn";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const formSchema = z.object({
+  username: z.string().nonempty({ message: "This field has to be filled." }),
   email: z
     .string()
     .min(1, { message: "This field has to be filled." })
@@ -31,11 +32,12 @@ const formSchema = z.object({
 
 interface FormWrapperProps extends HTMLAttributes<HTMLDivElement> {}
 
-const AuthForm = (props: FormWrapperProps): ReactElement => {
+const SignUpForm = (props: FormWrapperProps): ReactElement => {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      username: "",
       email: "",
       password: "",
     },
@@ -55,6 +57,22 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-4"
         >
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormDescription>
+                  This is your public display name.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <FormField
             control={form.control}
             name="email"
@@ -83,11 +101,11 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
               </FormItem>
             )}
           />
-          <Button type="submit">Sign In / Up</Button>
+          <Button type="submit">Create</Button>
         </form>
       </Form>
     </div>
   );
 };
 
-export default AuthForm;
+export default SignUpForm;

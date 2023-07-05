@@ -1,10 +1,10 @@
 import { cn } from "@/lib/shadcn";
 import { HTMLAttributes, ReactElement } from "react";
-import AuthForm from "./auth-form";
 import { Button } from "./ui/button";
 import Icons from "./icons";
 import Link from "next/link";
 import P from "./typography/p";
+import SignUpForm from "./sign-up-form";
 
 interface SignProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -33,7 +33,7 @@ const SignUp = (props: SignProps): ReactElement => {
         </div>
       </div>
 
-      <AuthForm />
+      <SignUpForm />
 
       <P className=" text-center">
         Already have an account?

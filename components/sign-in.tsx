@@ -1,6 +1,6 @@
 import { cn } from "@/lib/shadcn";
 import { HTMLAttributes, ReactElement } from "react";
-import AuthForm from "./auth-form";
+import SignInForm from "./sign-in-form";
 import { Button } from "./ui/button";
 import Icons from "./icons";
 import Link from "next/link";
@@ -11,7 +11,7 @@ interface SignProps extends HTMLAttributes<HTMLDivElement> {}
 const SignIn = (props: SignProps): ReactElement => {
   return (
     <div className={cn("w-full flex flex-col gap-4", props.className)}>
-      <AuthForm />
+      <SignInForm />
 
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
