@@ -1,9 +1,11 @@
 import { HTMLAttributes, ReactElement } from "react";
-import Copyright from "./copyright";
-import NavSocial from "./nav-social";
-import NavFooter from "./nav-footer";
-import Settings from "./settings";
+
 import { cn } from "@/lib/shadcn";
+
+import Copyright from "./copyright";
+import NavFooter from "./nav-footer";
+import NavSocial from "./nav-social";
+import Settings from "./settings";
 
 interface basicElement extends HTMLAttributes<HTMLElement> {}
 

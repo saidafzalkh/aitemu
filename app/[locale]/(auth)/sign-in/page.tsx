@@ -2,10 +2,10 @@ import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { ReactElement } from "react";
 
-import H3 from "@/components/typography/h3";
-import { Button } from "@/components/ui/button";
 import SignIn from "@/components/sign-in";
+import H3 from "@/components/typography/h3";
 import Small from "@/components/typography/small";
+import { Button } from "@/components/ui/button";
 
 const Page = (): ReactElement => {
   return (

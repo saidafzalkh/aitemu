@@ -1,5 +1,8 @@
 "use client";
 
+import { useTheme } from "next-themes";
+import { ReactElement } from "react";
+
 import {
   Select,
   SelectContent,
@@ -7,9 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useTheme } from "next-themes";
-
-import { ReactElement } from "react";
 
 const SelectTheme = (): ReactElement => {
   const { theme, setTheme } = useTheme();

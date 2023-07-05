@@ -1,8 +1,10 @@
-import { cn } from "@/lib/shadcn";
 import { HTMLAttributes, ReactElement } from "react";
-import Small from "./typography/small";
+
+import { cn } from "@/lib/shadcn";
+
 import SelectLang from "./select-lang";
 import SelectTheme from "./select-theme";
+import Small from "./typography/small";
 
 interface divProps extends HTMLAttributes<HTMLDivElement> {}
 

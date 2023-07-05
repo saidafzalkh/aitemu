@@ -1,5 +1,7 @@
-import { cn } from "@/lib/shadcn";
 import { HTMLAttributes, ReactElement } from "react";
+
+import { cn } from "@/lib/shadcn";
+
 import Small from "./typography/small";
 
 interface navProps extends HTMLAttributes<HTMLElement> {}

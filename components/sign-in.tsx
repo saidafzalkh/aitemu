@@ -1,10 +1,12 @@
-import { cn } from "@/lib/shadcn";
-import { HTMLAttributes, ReactElement } from "react";
-import SignInForm from "./sign-in-form";
-import { Button } from "./ui/button";
-import Icons from "./icons";
 import Link from "next/link";
+import { HTMLAttributes, ReactElement } from "react";
+
+import { cn } from "@/lib/shadcn";
+
+import Icons from "./icons";
+import SignInForm from "./sign-in-form";
 import P from "./typography/p";
+import { Button } from "./ui/button";
 
 interface SignProps extends HTMLAttributes<HTMLDivElement> {}
 

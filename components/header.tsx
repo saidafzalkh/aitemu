@@ -5,9 +5,9 @@ import { ReactElement } from "react";
 import Icons from "./icons";
 import Menu from "./menu";
 import Search from "./search";
+import Settings from "./settings";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
-import Settings from "./settings";
 
 const Header = (): ReactElement => {
   return (

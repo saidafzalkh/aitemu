@@ -1,5 +1,7 @@
 "use client";
 
+import { ReactElement } from "react";
+
 import {
   Select,
   SelectContent,
@@ -7,8 +9,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
-import { ReactElement } from "react";
 
 const SelectLang = (): ReactElement => {
   return (

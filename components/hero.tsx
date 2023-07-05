@@ -1,8 +1,9 @@
-import { ReactElement } from "react";
-import H1 from "./typography/h1";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { ReactElement } from "react";
+
+import H1 from "./typography/h1";
 import Lead from "./typography/lead";
+import { Button } from "./ui/button";
 
 const Hero = (): ReactElement => {
   return (

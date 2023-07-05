@@ -1,7 +1,8 @@
+import Link from "next/link";
 import { ReactElement } from "react";
+
 import Small from "./typography/small";
 import { Button } from "./ui/button";
-import Link from "next/link";
 
 const Copyright = (): ReactElement => {
   return (
