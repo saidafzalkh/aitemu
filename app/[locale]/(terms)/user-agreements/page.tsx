@@ -9,15 +9,8 @@ import { Button } from "@/components/ui/button";
 
 const Page = (): ReactElement => {
   return (
-    <>
-      <Button className="self-start mb-20" size="sm" variant="ghost" asChild>
-        <Link href="/">
-          <ChevronLeft size={16} className="mr-2" />
-          Home
-        </Link>
-      </Button>
+    <div className="flex flex-col gap-8">
       <H1 className="mb-6">Terms of Service - User Agreement</H1>
-
       <div>
         <H2 className="my-6">1. Acceptance of Terms</H2>
         <P>Welcome to aitemu, an open-source collection management tool.</P>
@@ -111,7 +104,7 @@ const Page = (): ReactElement => {
           </Button>
         </P>
       </div>
-    </>
+    </div>
   );
 };
 
