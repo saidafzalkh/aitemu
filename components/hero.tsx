@@ -1,13 +1,13 @@
-import Link from "next/link";
-import { ReactElement } from "react";
+import Link from 'next/link';
+import { ReactElement } from 'react';
 
-import H1 from "./typography/h1";
-import Lead from "./typography/lead";
-import { Button } from "./ui/button";
+import H1 from './typography/h1';
+import Lead from './typography/lead';
+import { Button } from './ui/button';
 
 const Hero = (): ReactElement => {
   return (
-    <article className="flex flex-col gap-2 sm:w-4/6 w-full mt-20">
+    <div className="flex flex-col gap-2 sm:w-4/6 w-full mt-20">
       <H1>Welcome to our Open-Source Collection Management Tool! 📚</H1>
       <Lead>
         Create personalized collections, track your items (books, marks, etc.),
@@ -23,7 +23,7 @@ const Hero = (): ReactElement => {
           <Link href="#">GitHub</Link>
         </Button>
       </div>
-    </article>
+    </div>
   );
 };
 
