@@ -5,7 +5,6 @@ import { getTranslator } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 
-import Footer from "@/components/footer";
 import Header from "@/components/header";
 
 import { ThemeProvider } from "./providers";
