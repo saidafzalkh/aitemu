@@ -6,8 +6,9 @@ import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 
 import Header from "@/components/header";
+import { Toaster } from "@/components/ui/toaster";
 
-import { ThemeProvider } from "./providers";
+import Providers from "./providers";
 
 interface layoutProps {
   children?: ReactNode;
@@ -37,12 +38,13 @@ export default function LocaleLayout({ children, params }: layoutProps) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Providers>
           <main className="min-h-screen">
             <Header />
             {children}
           </main>
-        </ThemeProvider>
+          <Toaster />
+        </Providers>
       </body>
     </html>
   );

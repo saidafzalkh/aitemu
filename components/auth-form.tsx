@@ -1,18 +1,13 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { HTMLAttributes, ReactElement } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+    Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/shadcn";
@@ -32,7 +27,7 @@ const formSchema = z.object({
 
 interface FormWrapperProps extends HTMLAttributes<HTMLDivElement> {}
 
-const SignUpForm = (props: FormWrapperProps): ReactElement => {
+const AuthForm = (props: FormWrapperProps): ReactElement => {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -50,6 +45,8 @@ const SignUpForm = (props: FormWrapperProps): ReactElement => {
     console.log(values);
   }
 
+  const path = usePathname();
+
   return (
     <div className={cn("w-4/5 m-auto", props.className)}>
       <Form {...form}>
@@ -57,22 +54,24 @@ const SignUpForm = (props: FormWrapperProps): ReactElement => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-4"
         >
-          <FormField
-            control={form.control}
-            name="username"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormDescription>
-                  This is your public display name.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {path === "/sign-up" && (
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Username</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    This is your public display name.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
           <FormField
             control={form.control}
             name="email"
@@ -101,11 +100,13 @@ const SignUpForm = (props: FormWrapperProps): ReactElement => {
               </FormItem>
             )}
           />
-          <Button type="submit">Create</Button>
+          <Button type="submit">
+            {path === "/sign-in" ? "Sign In" : "Sign Up"}
+          </Button>
         </form>
       </Form>
     </div>
   );
 };
 
-export default SignUpForm;
+export default AuthForm;

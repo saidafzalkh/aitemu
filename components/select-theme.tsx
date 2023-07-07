@@ -4,11 +4,7 @@ import { useTheme } from "next-themes";
 import { ReactElement } from "react";
 
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+    Select, SelectContent, SelectItem, SelectTrigger, SelectValue
 } from "@/components/ui/select";
 
 const SelectTheme = (): ReactElement => {
@@ -24,9 +20,15 @@ const SelectTheme = (): ReactElement => {
         <SelectValue placeholder="Theme" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="light">Light</SelectItem>
-        <SelectItem value="dark">Dark</SelectItem>
-        <SelectItem value="system">System</SelectItem>
+        <SelectItem disabled={theme === "light"} value="light">
+          Light
+        </SelectItem>
+        <SelectItem disabled={theme === "dark"} value="dark">
+          Dark
+        </SelectItem>
+        <SelectItem disabled={theme === "system"} value="system">
+          System
+        </SelectItem>
       </SelectContent>
     </Select>
   );

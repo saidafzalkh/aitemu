@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ReactElement } from "react";
 
-import Back from "@/components/back";
 import SignIn from "@/components/sign-in";
 import H3 from "@/components/typography/h3";
 import Small from "@/components/typography/small";
@@ -10,7 +9,6 @@ import { Button } from "@/components/ui/button";
 const Page = (): ReactElement => {
   return (
     <>
-      <Back className="self-start" />
       <H3>Welcome Back!</H3>
       <SignIn />
       <Small className="w-5/6 md:w-3/4 text-center">

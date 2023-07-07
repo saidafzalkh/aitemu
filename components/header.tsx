@@ -1,6 +1,9 @@
 import { Menu as MenuIcon } from "lucide-react";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { ReactElement } from "react";
+
+import { authOptions } from "@/lib/auth";
 
 import Icons from "./icons";
 import Menu from "./menu";
@@ -9,7 +12,7 @@ import Settings from "./settings";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 
-const Header = (): ReactElement => {
+const Header = async () => {
   return (
     <header className="w-full flex items-center justify-between py-4 container">
       <div>
@@ -17,6 +20,7 @@ const Header = (): ReactElement => {
           <Icons.logo size={36} />
         </Link>
       </div>
+
       <div className="flex gap-4 items-center h-5">
         <Search className="hidden md:inline-flex">Search...</Search>
 

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import Back from "@/components/back";
+import { Back } from "@/components/back";
 
 interface layoutProps {
   children?: ReactNode;

@@ -3,8 +3,8 @@ import { HTMLAttributes, ReactElement } from "react";
 
 import { cn } from "@/lib/shadcn";
 
+import AuthForm from "./auth-form";
 import Icons from "./icons";
-import SignUpForm from "./sign-up-form";
 import P from "./typography/p";
 import { Button } from "./ui/button";
 
@@ -35,7 +35,7 @@ const SignUp = (props: SignProps): ReactElement => {
         </div>
       </div>
 
-      <SignUpForm />
+      <AuthForm />
 
       <P className=" text-center">
         Already have an account?
