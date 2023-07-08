@@ -5,7 +5,7 @@ import { getTranslator } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 
-import Header from "@/components/header";
+import Header from "@/components/layout/header";
 import { Toaster } from "@/components/ui/toaster";
 
 import Providers from "./providers";

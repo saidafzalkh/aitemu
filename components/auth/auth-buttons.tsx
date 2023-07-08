@@ -6,9 +6,9 @@ import { ReactElement, useState } from "react";
 
 import { cn } from "@/lib/shadcn";
 
-import Icons from "./icons";
-import { Button, ButtonProps } from "./ui/button";
-import { useToast } from "./ui/use-toast";
+import Icons from "../icons";
+import { Button, ButtonProps } from "../ui/button";
+import { useToast } from "../ui/use-toast";
 
 interface buttonProps extends ButtonProps {}
 

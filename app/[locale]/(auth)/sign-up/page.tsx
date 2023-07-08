@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ReactElement } from "react";
 
-import SignUp from "@/components/sign-up";
+import SignUp from "@/components/auth/sign-up";
 import H3 from "@/components/typography/h3";
 import Small from "@/components/typography/small";
 import { Button } from "@/components/ui/button";

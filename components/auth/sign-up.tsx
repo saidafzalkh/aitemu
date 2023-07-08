@@ -3,10 +3,10 @@ import { HTMLAttributes, ReactElement } from "react";
 
 import { cn } from "@/lib/shadcn";
 
+import Icons from "../icons";
+import P from "../typography/p";
+import { Button } from "../ui/button";
 import AuthForm from "./auth-form";
-import Icons from "./icons";
-import P from "./typography/p";
-import { Button } from "./ui/button";
 
 interface SignProps extends HTMLAttributes<HTMLDivElement> {}
 

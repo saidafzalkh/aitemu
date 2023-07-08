@@ -4,11 +4,10 @@ import Link from "next/link";
 import { ReactElement } from "react";
 
 import {
-    NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink,
-    NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle
+    NavigationMenu, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
 
-const AuthNav = (): ReactElement => {
+const NavUser = (): ReactElement => {
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -22,4 +21,4 @@ const AuthNav = (): ReactElement => {
   );
 };
 
-export default AuthNav;
+export default NavUser;

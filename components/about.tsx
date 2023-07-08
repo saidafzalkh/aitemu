@@ -1,13 +1,13 @@
-import Link from 'next/link';
-import { ReactElement } from 'react';
+import Link from "next/link";
+import { ReactElement } from "react";
 
-import H1 from './typography/h1';
-import Large from './typography/large';
-import { Button } from './ui/button';
+import H1 from "./typography/h1";
+import Large from "./typography/large";
+import { Button } from "./ui/button";
 
 const About = (): ReactElement => {
   return (
-    <article className="flex flex-col gap-2 sm:w-5/6 w-full my-20">
+    <article className="flex flex-col gap-2 sm:w-5/6 w-full my-40">
       <H1>What is it?</H1>
       <Large>
         Are you tired of struggling to organize your collections? 😫🗂️

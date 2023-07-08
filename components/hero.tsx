@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 
 const Hero = (): ReactElement => {
   return (
-    <div className="flex flex-col gap-2 sm:w-4/6 w-full mt-20">
+    <div className="flex flex-col gap-2 sm:w-4/6 w-full mt-40">
       <H1>Welcome to our Open-Source Collection Management Tool! 📚</H1>
       <Lead>
         Create personalized collections, track your items (books, marks, etc.),

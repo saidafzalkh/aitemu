@@ -4,15 +4,15 @@ import Link from "next/link";
 
 import { authOptions } from "@/lib/auth";
 
-import { SignOutButton } from "./auth-buttons";
-import AuthNav from "./auth-nav";
-import Icons from "./icons";
-import Menu from "./menu";
-import Search from "./search";
-import Settings from "./settings";
-import { Button } from "./ui/button";
-import { Separator } from "./ui/separator";
-import { UserAvatar } from "./user-avatar";
+import { SignOutButton } from "../auth/auth-buttons";
+import Icons from "../icons";
+import Menu from "../menu";
+import NavUser from "../nav-user";
+import Search from "../search";
+import Settings from "../settings";
+import { Button } from "../ui/button";
+import { Separator } from "../ui/separator";
+import { UserAvatar } from "../user-avatar";
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
@@ -24,7 +24,7 @@ const Header = async () => {
           <Icons.logo size={36} />
         </Link>
 
-        {session?.user && <AuthNav />}
+        {session?.user && <NavUser />}
       </div>
 
       <div className="flex gap-4 items-center h-5">
