@@ -1,6 +1,7 @@
-import { HTMLAttributes, ReactElement } from 'react';
+import { HTMLAttributes, ReactElement } from "react";
+import Balancer from "react-wrap-balancer";
 
-import { cn } from '@/lib/shadcn';
+import { cn } from "@/lib/shadcn";
 
 interface PProps extends HTMLAttributes<HTMLParagraphElement> {}
 
@@ -13,7 +14,7 @@ const Large = (props: PProps): ReactElement => {
         props.className
       )}
     >
-      {props.children}
+      <Balancer>{props.children}</Balancer>
     </p>
   );
 };

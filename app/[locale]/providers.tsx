@@ -4,6 +4,7 @@ import { SessionProvider as NextSessionProvider } from "next-auth/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ThemeProviderProps } from "next-themes/dist/types";
 import * as React from "react";
+import { Provider as BalancerProvider } from "react-wrap-balancer";
 
 type Props = {
   children?: React.ReactNode;
@@ -21,7 +22,7 @@ const Providers = ({ children }: Props) => {
   return (
     <SessionProvider>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        {children}
+        <BalancerProvider>{children}</BalancerProvider>
       </ThemeProvider>
     </SessionProvider>
   );

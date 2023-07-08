@@ -1,5 +1,7 @@
-import { cn } from "@/lib/shadcn";
 import { HTMLAttributes, ReactElement } from "react";
+import Balancer from "react-wrap-balancer";
+
+import { cn } from "@/lib/shadcn";
 
 interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {}
 
@@ -12,7 +14,7 @@ const H1 = (props: HeadingProps): ReactElement => {
         props.className
       )}
     >
-      {props.children}
+      <Balancer>{props.children}</Balancer>
     </h1>
   );
 };

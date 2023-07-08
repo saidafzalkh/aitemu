@@ -1,5 +1,7 @@
-import { cn } from "@/lib/shadcn";
 import { HTMLAttributes, ReactElement } from "react";
+import { Balancer } from "react-wrap-balancer";
+
+import { cn } from "@/lib/shadcn";
 
 interface PProps extends HTMLAttributes<HTMLParagraphElement> {}
 
@@ -9,7 +11,7 @@ const P = (props: PProps): ReactElement => {
       {...props}
       className={cn("leading-7 [&:not(:first-child)]:mt-6", props.className)}
     >
-      {props.children}
+      <Balancer>{props.children}</Balancer>
     </p>
   );
 };
