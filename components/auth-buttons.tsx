@@ -109,7 +109,7 @@ export const SignOutButton = ({ ...props }: buttonProps): ReactElement => {
   };
 
   return (
-    <Button {...props} onClick={handleSignOut}>
+    <Button {...props} onClick={handleSignOut} disabled={isLoading}>
       {isLoading ? (
         <Loader2 className="animate-spin h-4 w-4 mr-2" />
       ) : (

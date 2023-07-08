@@ -1,15 +1,11 @@
 import { HTMLAttributes, ReactElement, ReactNode } from "react";
 
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
+    Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger
 } from "@/components/ui/sheet";
 
 import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
 
 enum MenuSides {
   TOP = "top",
@@ -41,6 +37,7 @@ const Menu = (props: MenuProps): ReactElement => {
             <SheetTitle>{props.headingTitle}</SheetTitle>
             <SheetDescription>{props.headingDescription}</SheetDescription>
           </SheetHeader>
+          <Separator className="my-4" />
           <div>{props.children}</div>
         </SheetContent>
       </Sheet>
