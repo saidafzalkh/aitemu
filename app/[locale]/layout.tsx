@@ -27,6 +27,27 @@ export async function generateMetadata({ params }: MetadataProps) {
     description: t("description"),
     keywords: t("keywords"),
     authors: [{ name: t("author") }],
+    themeColor: [
+      { media: "(prefers-color-scheme: light)", color: "white" },
+      { media: "(prefers-color-scheme: dark)", color: "black" },
+    ],
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      creator: "@kh_saddy",
+    },
+    icons: {
+      icon: "/favicon.ico",
+    },
+    openGraph: {
+      type: "website",
+      locale: params.locale,
+      url: "https://aitemu.vercel.app/",
+      title: t("title"),
+      description: t("description"),
+      siteName: "aitemu",
+    },
   };
 }
 
