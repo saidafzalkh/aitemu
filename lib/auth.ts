@@ -9,10 +9,13 @@ import prisma from "./prisma";
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
+
   session: { strategy: "jwt" },
+
   pages: {
     signIn: "/sign-in",
   },
+
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -23,7 +26,37 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
   ],
+
+  callbacks: {
+    async session({ session, token }) {
+      if (token) {
+        (session.user.id = token.id),
+          (session.user.name = token.name),
+          (session.user.email = token.email),
+          (session.user.image = token.picture);
+      }
+
+      return session;
+    },
+    async jwt({ token, user }) {
+      const prismaUser = await prisma.user.findFirst({
+        where: { email: token.email as string },
+      });
+
+      if (!prismaUser) {
+        if (user) {
+          token.id = user?.id;
+        }
+        return token;
+      }
+
+      return {
+        id: prismaUser.id,
+        name: prismaUser.name,
+        email: prismaUser.email,
+        picture: prismaUser.image,
+      };
+    },
+  },
   debug: process.env.NODE_ENV !== "production",
 };
-
-console.log(process.env.NODE_ENV);
