@@ -1,4 +1,4 @@
-import { AuthOptions } from "next-auth";
+import { AuthOptions, getServerSession } from "next-auth";
 import { Adapter } from "next-auth/adapters";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
@@ -45,7 +45,7 @@ export const authOptions: AuthOptions = {
 
       if (!prismaUser) {
         if (user) {
-          token.id = user?.id;
+          token.id = user!.id;
         }
         return token;
       }
@@ -57,6 +57,11 @@ export const authOptions: AuthOptions = {
         picture: prismaUser.image,
       };
     },
+    redirect() {
+      return "/";
+    },
   },
   debug: process.env.NODE_ENV !== "production",
 };
+
+export const getAuthSession = () => getServerSession(authOptions);

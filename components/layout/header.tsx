@@ -1,13 +1,11 @@
 import { Lock, Menu as MenuIcon, Settings as SettingsIcon, Table as TableIcon } from "lucide-react";
-import { getServerSession } from "next-auth";
 import Link from "next/link";
 
-import { authOptions } from "@/lib/auth";
+import { getAuthSession } from "@/lib/auth";
 
 import { SignOutButton } from "../auth/auth-buttons";
 import Icons from "../icons";
 import Menu from "../menu";
-import NavUser from "../nav-user";
 import Search from "../search";
 import Settings from "../settings";
 import { Button } from "../ui/button";
@@ -15,7 +13,7 @@ import { Separator } from "../ui/separator";
 import { UserAvatar } from "../user-avatar";
 
 const Header = async () => {
-  const session = await getServerSession(authOptions);
+  const session = await getAuthSession();
 
   return (
     <header className="w-full flex items-center justify-between py-4 container fixed top-0 bg-background">
@@ -23,8 +21,6 @@ const Header = async () => {
         <Link href="/">
           <Icons.logo size={36} />
         </Link>
-
-        {session?.user && <NavUser />}
       </div>
 
       <div className="flex gap-4 items-center h-5">

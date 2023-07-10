@@ -27,6 +27,13 @@ export async function generateMetadata({ params }: MetadataProps) {
     metadataBase: new URL(
       dev ? "http://localhost:3000" : "https://aitemu.vercel.app"
     ),
+    alternates: {
+      canonical: "/",
+      languages: {
+        en: "/en",
+        ru: "/ru",
+      },
+    },
     title: t("title"),
     description: t("description"),
     keywords: t("keywords"),
