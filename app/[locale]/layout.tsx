@@ -21,8 +21,12 @@ interface MetadataProps {
 
 export async function generateMetadata({ params }: MetadataProps) {
   const t = await getTranslator(params.locale, "Metadata");
+  const dev = process.env.NODE_ENV === "development";
 
   return {
+    metadataBase: new URL(
+      dev ? "http://localhost:3000" : "https://aitemu.vercel.app"
+    ),
     title: t("title"),
     description: t("description"),
     keywords: t("keywords"),
@@ -43,7 +47,7 @@ export async function generateMetadata({ params }: MetadataProps) {
     openGraph: {
       type: "website",
       locale: params.locale,
-      url: "https://aitemu.vercel.app/",
+      url: "https://aitemu.vercel.app",
       title: t("title"),
       description: t("description"),
       siteName: "aitemu",

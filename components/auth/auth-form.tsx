@@ -14,7 +14,7 @@ import { cn } from "@/lib/shadcn";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const formSchema = z.object({
-  username: z.string().nonempty({ message: "This field has to be filled." }),
+  name: z.string().nonempty({ message: "This field has to be filled." }),
   email: z
     .string()
     .min(1, { message: "This field has to be filled." })
@@ -32,7 +32,7 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      name: "",
       email: "",
       password: "",
     },
@@ -57,10 +57,10 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
           {path === "/sign-up" && (
             <FormField
               control={form.control}
-              name="username"
+              name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Name</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>

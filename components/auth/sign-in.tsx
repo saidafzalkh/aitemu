@@ -3,7 +3,6 @@ import { HTMLAttributes, ReactElement } from "react";
 
 import { cn } from "@/lib/shadcn";
 
-import Icons from "../icons";
 import P from "../typography/p";
 import { Button } from "../ui/button";
 import { GithubButton, GoogleButton } from "./auth-buttons";

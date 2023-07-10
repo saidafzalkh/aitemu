@@ -3,9 +3,9 @@ import { HTMLAttributes, ReactElement } from "react";
 
 import { cn } from "@/lib/shadcn";
 
-import Icons from "../icons";
 import P from "../typography/p";
 import { Button } from "../ui/button";
+import { GithubButton, GoogleButton } from "./auth-buttons";
 import AuthForm from "./auth-form";
 
 interface SignProps extends HTMLAttributes<HTMLDivElement> {}
@@ -14,14 +14,8 @@ const SignUp = (props: SignProps): ReactElement => {
   return (
     <div className={cn("w-full flex flex-col gap-4", props.className)}>
       <div className="w-4/5 m-auto flex gap-4">
-        <Button variant="outline" size="sm" className="w-full">
-          <Icons.google className="h-4 w-4 mr-2 fill-foreground" />
-          Google
-        </Button>
-        <Button variant="outline" size="sm" className="w-full">
-          <Icons.github className="h-4 w-4 mr-2 fill-foreground" />
-          GitHub
-        </Button>
+        <GoogleButton className="w-full" />
+        <GithubButton className="w-full" />
       </div>
 
       <div className="relative">
