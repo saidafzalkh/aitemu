@@ -20,7 +20,9 @@ export const GoogleButton = ({ ...props }: buttonProps) => {
     setIsLoading(true);
 
     try {
-      await signIn("google");
+      await signIn("google", {
+        callbackUrl: "http://localhost:3000",
+      });
     } catch (error) {
       toast({
         title: "Error",
@@ -58,7 +60,7 @@ export const GithubButton = ({ ...props }: buttonProps) => {
     setIsLoading(true);
 
     try {
-      await signIn("github");
+      await signIn("github", { callbackUrl: "http://localhost:3000" });
     } catch (error) {
       toast({
         title: "Error",

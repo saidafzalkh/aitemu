@@ -6,8 +6,9 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
   const session = await getServerSession();
 
   if (session?.user) redirect("/sign-in");
+  console.log(session);
 
-  return <div className="container">{children}</div>;
+  return <div className="container mt-20">{children}</div>;
 };
 
 export default DashboardLayout;
