@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 
+import { Metadata, ResolvingMetadata } from "next";
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -15,18 +16,19 @@ interface layoutProps {
   params?: { locale: string };
 }
 
-interface MetadataProps {
+type Props = {
   params: { locale: string };
-}
+};
 
-export async function generateMetadata({ params }: MetadataProps) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslator(params.locale, "Metadata");
-  const dev = process.env.NODE_ENV === "development";
+  const url =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://aitemu.vercel.app";
 
   return {
-    metadataBase: new URL(
-      dev ? "http://localhost:3000" : "https://aitemu.vercel.app"
-    ),
+    metadataBase: new URL(url),
     alternates: {
       canonical: "/",
       languages: {

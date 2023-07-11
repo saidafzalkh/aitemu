@@ -1,3 +1,4 @@
+import { SearchIcon } from "lucide-react";
 import { HTMLAttributes, ReactElement } from "react";
 
 import { cn } from "@/lib/shadcn";
@@ -13,7 +14,8 @@ const Search = (props: searchProps): ReactElement => {
         props.className
       )}
     >
-      {props.children}
+      <SearchIcon className="w-4 h-4 mr-2" />
+      <span>Search...</span>
     </button>
   );
 };

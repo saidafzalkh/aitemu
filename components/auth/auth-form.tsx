@@ -14,7 +14,7 @@ import { cn } from "@/lib/shadcn";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const formSchema = z.object({
-  name: z.string().nonempty({ message: "This field has to be filled." }),
+  name: z.string(),
   email: z
     .string()
     .min(1, { message: "This field has to be filled." })
@@ -62,7 +62,7 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input placeholder="User" {...field} />
                   </FormControl>
                   <FormDescription>
                     This is your public display name.
@@ -77,7 +77,7 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Email *</FormLabel>
                 <FormControl>
                   <Input placeholder="example@email.com" {...field} />
                 </FormControl>
@@ -91,7 +91,7 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>Password *</FormLabel>
                 <FormControl>
                   <Input type="password" {...field} />
                 </FormControl>
