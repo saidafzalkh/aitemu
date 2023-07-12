@@ -1,7 +1,6 @@
 import { nanoid } from "nanoid";
 import { AuthOptions, getServerSession } from "next-auth";
 import { Adapter } from "next-auth/adapters";
-import Credentials from "next-auth/providers/credentials";
 import Github from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 
@@ -12,6 +11,7 @@ import { prisma } from "./prisma";
 export const authOptions: AuthOptions = {
   pages: {
     signIn: "/sign-in",
+    signOut: "/",
   },
 
   adapter: PrismaAdapter(prisma) as Adapter,
@@ -29,20 +29,6 @@ export const authOptions: AuthOptions = {
     Github({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    }),
-
-    Credentials({
-      credentials: {
-        email: { type: "email", label: "Email" },
-        password: { type: "password", label: "Password" },
-      },
-      authorize: async (credentials) => {
-        const dbUser = await prisma.user.findUnique({
-          where: { email: credentials?.email },
-        });
-
-        return null;
-      },
     }),
   ],
 
@@ -85,7 +71,7 @@ export const authOptions: AuthOptions = {
     },
 
     redirect: async () => {
-      return "/";
+      return "/dashboard";
     },
   },
 };
