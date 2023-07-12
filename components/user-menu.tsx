@@ -12,7 +12,7 @@ const UserMenu = (): ReactElement => {
       <ul>
         <li>
           <Button asChild variant="link" size="sm">
-            <Link href="/profile">
+            <Link href="/dashboard">
               <TableIcon className="w-4 h-4 mr-2" />
               Dashboard
             </Link>

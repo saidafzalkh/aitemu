@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       creator: "@kh_saddy",
     },
     icons: {
-      icon: "/favicon.ico",
+      icon: "/favicon.svg",
     },
     openGraph: {
       type: "website",

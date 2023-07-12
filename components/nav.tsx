@@ -24,8 +24,8 @@ const Navigation = async (): Promise<ReactElement> => {
               img={session.user.image || ""}
             />
           }
-          headingTitle={session.user.name || "User"}
-          headingDescription={session.user.email || ""}
+          headingtitle={session.user.name || "User"}
+          headingdescription={session.user.email || ""}
         >
           <UserMenu />
         </Menu>

@@ -21,6 +21,7 @@ export const UserAvatar = ({ user, ...props }: UserAvatarProps) => {
             src={props.img}
             alt="profile picture"
             referrerPolicy="no-referrer"
+            sizes="(max-width: 32px)"
           />
         </div>
       ) : (

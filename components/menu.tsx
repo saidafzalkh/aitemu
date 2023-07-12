@@ -16,8 +16,8 @@ enum MenuSides {
 
 interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   trigger?: ReactNode;
-  headingTitle?: string;
-  headingDescription?: string;
+  headingtitle?: string;
+  headingdescription?: string;
   side?: MenuSides;
 }
 
@@ -34,8 +34,8 @@ const Menu = (props: MenuProps): ReactElement => {
         </SheetTrigger>
         <SheetContent side={props.side}>
           <SheetHeader>
-            <SheetTitle>{props.headingTitle}</SheetTitle>
-            <SheetDescription>{props.headingDescription}</SheetDescription>
+            <SheetTitle>{props.headingtitle}</SheetTitle>
+            <SheetDescription>{props.headingdescription}</SheetDescription>
           </SheetHeader>
           <Separator className="my-4" />
           <div>{props.children}</div>
