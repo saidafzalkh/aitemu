@@ -7,9 +7,6 @@
     "name": "Saidafzal Kholkhujaev",
     "url": "https://github.com/saidafzalkh"
   },
-  "prisma": {
-    "seed": "ts-node --compiler-options {'module':'CommonJS'} prisma/seed.ts"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
