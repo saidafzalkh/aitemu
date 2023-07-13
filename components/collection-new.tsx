@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 
 const CollectionNew = (): ReactElement => {
   return (
-    <Card>
+    <Card className="border-dashed">
       <CardHeader>
         <CardTitle>Create a new collection</CardTitle>
         <CardDescription>
@@ -14,7 +14,9 @@ const CollectionNew = (): ReactElement => {
         </CardDescription>
       </CardHeader>
       <CardFooter>
-        <Button className="w-full">Create</Button>
+        <Button variant="secondary" className="w-full">
+          Create
+        </Button>
       </CardFooter>
     </Card>
   );

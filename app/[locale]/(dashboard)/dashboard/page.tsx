@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import CollectionCard from "@/components/collection-card";
 import CollectionNew from "@/components/collection-new";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Input } from "@/components/ui/input";
 import { getAuthSession } from "@/lib/auth";
 
 const Page = async () => {
@@ -22,7 +23,11 @@ const Page = async () => {
         </AlertDescription>
       </Alert>
 
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-10">
+      <div>
+        <Input />
+      </div>
+
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5">
         <CollectionCard />
         <CollectionNew />
       </div>
