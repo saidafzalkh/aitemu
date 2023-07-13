@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ReactElement } from "react";
 
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,8 +15,8 @@ const CollectionNew = (): ReactElement => {
         </CardDescription>
       </CardHeader>
       <CardFooter>
-        <Button variant="secondary" className="w-full">
-          Create
+        <Button variant="secondary" className="w-full" asChild>
+          <Link href="/dashboard/collections/new">Create</Link>
         </Button>
       </CardFooter>
     </Card>

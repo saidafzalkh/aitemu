@@ -23,8 +23,8 @@ const Page = async () => {
         </AlertDescription>
       </Alert>
 
-      <div>
-        <Input />
+      <div className="mt-5">
+        <Input className="md:w-3/4" placeholder="search collections..." />
       </div>
 
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5">

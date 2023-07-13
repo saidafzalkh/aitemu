@@ -1,7 +1,9 @@
 "use client";
 
+import { Loader2 } from "lucide-react";
+import { signIn } from "next-auth/react";
 import { usePathname } from "next/navigation";
-import { HTMLAttributes, ReactElement } from "react";
+import { HTMLAttributes, ReactElement, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
@@ -9,6 +11,7 @@ import {
     Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/shadcn";
 import { FormSchema, FormType } from "@/validators/auth-validator";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +19,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 interface FormWrapperProps extends HTMLAttributes<HTMLDivElement> {}
 
 const AuthForm = (props: FormWrapperProps): ReactElement => {
+  const { toast } = useToast();
+  const [loading, setLoading] = useState<boolean>(false);
+
   const form = useForm<FormType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -25,12 +31,26 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: FormType) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-  }
+  const onSubmit = async (values: FormType) => {
+    setLoading(true);
+    try {
+      await signIn("credentials", {
+        email: values.email,
+        password: values.password,
+        name: values.name || null,
+        redirect: false,
+      });
+    } catch (error) {
+      toast({
+        title: "Error!",
+        description:
+          "There was error sign in with Github. Try again or use another Provider",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const path = usePathname();
 
@@ -88,7 +108,13 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
             )}
           />
           <Button type="submit">
-            {path === "/sign-in" ? "Sign In" : "Sign Up"}
+            {loading ? (
+              <Loader2 className="animate-spin w-4 h-4" />
+            ) : path === "/sign-in" ? (
+              "Sign In"
+            ) : (
+              "Sign Up"
+            )}
           </Button>
         </form>
       </Form>
