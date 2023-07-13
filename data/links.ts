@@ -6,6 +6,7 @@ const links = {
     telegram: "",
     discord: "",
   },
+  domain: "https://aitemu.vercel.app",
 };
 
 export default links;

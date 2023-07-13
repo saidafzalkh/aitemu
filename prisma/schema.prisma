@@ -3,9 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 model Account {
@@ -64,14 +63,20 @@ model User {
 }
 
 model Collection {
-  id          String @id @default(cuid())
+  id          String  @id @default(cuid())
   name        String
-  description String
-  author      User   @relation(fields: [userId], references: [id])
+  description String?
+  author      User    @relation(fields: [userId], references: [id])
   userId      String
+  theme       String?
+  image       String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Item {
+  id String @id @default(cuid())
 }
 
 model Like {

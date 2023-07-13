@@ -30,7 +30,7 @@ const UserMenu = async (): Promise<ReactElement> => {
         <li>
           <SheetClose asChild>
             <Button asChild variant="link" size="sm">
-              <Link href="/settings">
+              <Link href="dashboard/settings">
                 <SettingsIcon className="w-4 h-4 mr-2" />
                 Settings
               </Link>

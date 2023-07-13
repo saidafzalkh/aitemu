@@ -8,6 +8,7 @@ import { ReactNode } from "react";
 
 import Header from "@/components/layout/header";
 import { Toaster } from "@/components/ui/toaster";
+import links from "@/data/links";
 
 import Providers from "./providers";
 
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : "https://aitemu.vercel.app";
+      : links.domain;
 
   return {
     metadataBase: new URL(url),
