@@ -9,7 +9,7 @@ interface Props {
 const DashboardLayout = ({ children }: Props) => {
   return (
     <section className="container">
-      <Header />
+      <Header className="border-b" />
       <div className="pt-20 h-full">{children}</div>
     </section>
   );
