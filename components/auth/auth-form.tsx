@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation";
 import { HTMLAttributes, ReactElement } from "react";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -11,26 +10,14 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/shadcn";
+import { FormSchema, FormType } from "@/validators/auth-validator";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-const formSchema = z.object({
-  name: z.string(),
-  email: z
-    .string()
-    .min(1, { message: "This field has to be filled." })
-    .email("This is not a valid email."),
-  password: z
-    .string()
-    .nonempty({ message: "This field has to be filled." })
-    .min(8, { message: "Too short" }),
-});
 
 interface FormWrapperProps extends HTMLAttributes<HTMLDivElement> {}
 
 const AuthForm = (props: FormWrapperProps): ReactElement => {
-  // 1. Define your form.
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<FormType>({
+    resolver: zodResolver(FormSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -39,7 +26,7 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: FormType) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);

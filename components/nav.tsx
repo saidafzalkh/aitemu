@@ -1,8 +1,7 @@
 import { MenuIcon } from "lucide-react";
+import { User } from "next-auth";
 import Link from "next/link";
 import { ReactElement } from "react";
-
-import { getAuthSession } from "@/lib/auth";
 
 import Menu from "./menu";
 import Search from "./search";
@@ -11,18 +10,18 @@ import { Button } from "./ui/button";
 import { UserAvatar } from "./user-avatar";
 import UserMenu from "./user-menu";
 
-const Navigation = async (): Promise<ReactElement> => {
-  const session = await getAuthSession();
-
+const Navigation = async ({
+  session,
+}: {
+  session: User | null;
+}): Promise<ReactElement> => {
   return (
     <nav className="flex items-center">
       {session ? (
         <Menu
-          trigger={
-            <UserAvatar className="cursor-pointer" user={session.user} />
-          }
-          headingtitle={session.user.name || "User"}
-          headingdescription={session.user.email || ""}
+          trigger={<UserAvatar className="cursor-pointer" user={session} />}
+          headingtitle={session.name!}
+          headingdescription={session.email!}
         >
           <UserMenu />
         </Menu>

@@ -1,12 +1,12 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next-intl/client";
+import { useRouter } from "next/navigation";
 import { ReactElement, useTransition } from "react";
 
 import {
     Select, SelectContent, SelectItem, SelectTrigger, SelectValue
 } from "@/components/ui/select";
-import { Value } from "@radix-ui/react-select";
 
 interface Props {
   locale: "en" | "ru";
