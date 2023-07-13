@@ -11,7 +11,7 @@ const Header = async () => {
   const session = await getAuthSession();
 
   return (
-    <header className="w-full flex items-center justify-between py-4 container fixed top-0 bg-background">
+    <header className="w-full flex items-center justify-between py-4 container fixed top-0 left-0 bg-background">
       <div className="flex gap-4">
         <Link href="/">
           <Icons.logo size={36} />

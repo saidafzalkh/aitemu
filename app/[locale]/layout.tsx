@@ -6,7 +6,6 @@ import { getTranslator } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 
-import Header from "@/components/layout/header";
 import { Toaster } from "@/components/ui/toaster";
 import links from "@/data/links";
 
@@ -74,10 +73,7 @@ export default function LocaleLayout({ children, params }: layoutProps) {
     <html lang={locale} suppressHydrationWarning>
       <body suppressHydrationWarning>
         <Providers>
-          <main className="min-h-screen">
-            <Header />
-            {children}
-          </main>
+          <main className="min-h-screen">{children}</main>
           <Toaster />
         </Providers>
       </body>
