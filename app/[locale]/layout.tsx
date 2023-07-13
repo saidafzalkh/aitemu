@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { useLocale } from "next-intl";
 import { getTranslator } from "next-intl/server";
 import { notFound } from "next/navigation";

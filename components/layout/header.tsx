@@ -15,7 +15,7 @@ const Header = async () => {
       </div>
 
       <div className="flex gap-4 items-center h-5">
-        <Search className="hidden md:flex" />
+        <Search />
         <Separator className="hidden md:block" orientation="vertical" />
         <Navigation />
       </div>

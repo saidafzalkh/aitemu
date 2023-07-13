@@ -19,10 +19,7 @@ const Navigation = async (): Promise<ReactElement> => {
       {session ? (
         <Menu
           trigger={
-            <UserAvatar
-              className="cursor-pointer bg-foreground"
-              img={session.user.image || ""}
-            />
+            <UserAvatar className="cursor-pointer" user={session.user} />
           }
           headingtitle={session.user.name || "User"}
           headingdescription={session.user.email || ""}

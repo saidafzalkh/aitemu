@@ -8,7 +8,30 @@
 
   "Index": {
     "hero": {
-      "title": "Hello World"
+      "title": "Welcome to our Open-Source Collection Management Tool! 📚",
+      "description": "Create personalized collections, track your items (books, marks, etc.), and easily search within them. Join our community and take control of your collections today! 🎉",
+      "call-to-action": "Start organizing with us now! 🚀",
+      "get-started": "Get Started"
+    },
+
+    "about": {
+      "title": "What is it?",
+      "items": {
+        "one": "Are you tired of struggling to organize your collections? 😫🗂️ Don't worry, we've got you covered! With our innovative platform, you can create personalized collections and effortlessly keep track of all your precious items. 🎉💼",
+        "two": "Need to find that specific book or mark? No problem! Our powerful search feature makes it a breeze to locate any item within your collections. 🧐🔎",
+        "three": "But wait, there's more! 😊🌟 You don't have to manage your collections alone. Join our vibrant community of collectors who share the same passion as you. Connect, interact, and discover new treasures together! 💪👥",
+        "four": "Share your thoughts, like what others have collected, and leave comments to spark meaningful conversations. Let the excitement unfold as you dive into the world of collections! 💬🤝",
+        "five": "So, what are you waiting for? 🚀🔥 Take control of your collections today and experience the joy of organizing in a whole new way. Join our community now and let the adventure begin! 🎊💪"
+      },
+
+      "join": "Join"
     }
+  },
+
+  "Buttons": {
+    "search": "Search",
+    "sign-in": "Sign In",
+    "sign-up": "Sign Up",
+    "sign-out": "Sign Out"
   }
 }

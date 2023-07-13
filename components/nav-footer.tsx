@@ -1,12 +1,17 @@
+import { signOut } from "next-auth/react";
+import Link from "next/link";
 import { HTMLAttributes, ReactElement } from "react";
 
+import { getAuthSession } from "@/lib/auth";
 import { cn } from "@/lib/shadcn";
 
 import Small from "./typography/small";
 
 interface navProps extends HTMLAttributes<HTMLElement> {}
 
-const NavFooter = (props: navProps): ReactElement => {
+const NavFooter = async (props: navProps): Promise<ReactElement> => {
+  const session = await getAuthSession();
+
   return (
     <nav {...props} className={cn("", props.className)}>
       <ul>
@@ -16,10 +21,14 @@ const NavFooter = (props: navProps): ReactElement => {
           </Small>
         </li>
         <li>
-          <Small>Sign In</Small>
+          <Link href="/sign-in">
+            <Small>Sign In</Small>
+          </Link>
         </li>
         <li>
-          <Small>Sign Up</Small>
+          <Link href="/sign-up">
+            <Small>Sign Up</Small>
+          </Link>
         </li>
         <li>
           <Small>Collections</Small>

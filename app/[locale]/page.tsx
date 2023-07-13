@@ -1,8 +1,8 @@
 import { useTranslations } from "next-intl";
 
-import About from "@/components/about";
-import Hero from "@/components/hero";
+import About from "@/components/layout/about";
 import Footer from "@/components/layout/footer";
+import Hero from "@/components/layout/hero";
 
 export default function Page() {
   const t = useTranslations("Index.hero");
