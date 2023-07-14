@@ -10,8 +10,8 @@ export default function Page() {
 
   return (
     <>
+      <Header />
       <section className="container min-h-screen ">
-        <Header />
         <Hero />
         <About />
       </section>

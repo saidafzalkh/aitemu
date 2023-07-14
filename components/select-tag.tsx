@@ -11,30 +11,32 @@ import {
     FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage
 } from "@/components/ui/form";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { TOPICS } from "@/config";
+import { formatString } from "@/helpers/format-string";
 import { cn } from "@/lib/shadcn";
 
-interface Option {
-  label: string;
-  value: string;
-}
+import { ScrollArea } from "./ui/scroll-area";
 
-interface Props {
-  options: Option[];
-  label?: string;
-  description?: string;
+type Props = {
   form: UseFormReturn<
     {
+      topic: string;
       name: string;
       description: string;
-      topic: string;
     },
     any,
     undefined
   >;
-}
+};
 
-export function SelectTag({ options, form }: Props) {
+type topicType = { label: string; value: string };
+
+export function SelectTag({ form }: Props) {
+  const topics: topicType[] = TOPICS["en"].map((e) => ({
+    label: e,
+    value: formatString(e),
+  }));
+
   return (
     <FormField
       control={form.control}
@@ -54,8 +56,7 @@ export function SelectTag({ options, form }: Props) {
                   )}
                 >
                   {field.value
-                    ? options.find((option) => option.value === field.value)
-                        ?.label
+                    ? topics.find((topic) => topic.value === field.value)?.label
                     : "Select Topic"}
                   <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
@@ -67,10 +68,10 @@ export function SelectTag({ options, form }: Props) {
                 <CommandEmpty>No topic found.</CommandEmpty>
                 <ScrollArea className="h-72">
                   <CommandGroup>
-                    {options.map((option) => (
+                    {topics.map((topic) => (
                       <CommandItem
-                        value={option.value}
-                        key={option.value}
+                        value={topic.value}
+                        key={topic.value}
                         onSelect={(value) => {
                           form.setValue("topic", value);
                         }}
@@ -78,12 +79,12 @@ export function SelectTag({ options, form }: Props) {
                         <Check
                           className={cn(
                             "mr-2 h-4 w-4",
-                            option.value === field.value
+                            topic.value === field.value
                               ? "opacity-100"
                               : "opacity-0"
                           )}
                         />
-                        {option.label}
+                        {topic.label}
                       </CommandItem>
                     ))}
                   </CommandGroup>
@@ -92,7 +93,7 @@ export function SelectTag({ options, form }: Props) {
             </PopoverContent>
           </Popover>
           <FormDescription>
-            This is the topic of your collection.
+            Choose a topic for your collection from exist list
           </FormDescription>
           <FormMessage />
         </FormItem>

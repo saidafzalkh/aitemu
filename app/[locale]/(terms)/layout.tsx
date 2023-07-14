@@ -10,8 +10,8 @@ interface layoutProps {
 export default function LocaleLayout({ children }: layoutProps) {
   return (
     <div className="py-10 ">
+      <Header />
       <article className="container sm:max-w-4xl mx-auto mt-20">
-        <Header />
         <Back className="self-start mb-10" />
         {children}
       </article>
