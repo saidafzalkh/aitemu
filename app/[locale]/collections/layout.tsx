@@ -6,7 +6,7 @@ interface Props {
   children: ReactNode;
 }
 
-const DashboardLayout = ({ children }: Props) => {
+const CollectionLayout = ({ children }: Props) => {
   return (
     <>
       <Header className="border-b z-10" />
@@ -17,4 +17,4 @@ const DashboardLayout = ({ children }: Props) => {
   );
 };
 
-export default DashboardLayout;
+export default CollectionLayout;

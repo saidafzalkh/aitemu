@@ -13,12 +13,11 @@ interface Props extends HTMLAttributes<HTMLDivElement> {}
 
 const Header = async ({ className }: Props) => {
   const session = await getAuthSession();
-  console.log(session);
 
   return (
     <header
       className={cn(
-        "w-full flex items-center justify-between py-4 container fixed top-0 left-0 bg-background",
+        "w-full flex items-center justify-between py-4 container fixed top-0 bg-background",
         className
       )}
     >

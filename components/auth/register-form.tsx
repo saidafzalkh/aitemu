@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { HTMLAttributes, ReactElement, useState } from "react";
@@ -33,18 +34,13 @@ const RegisterForm = (props: FormWrapperProps): ReactElement => {
   const onSubmit = async (values: RegisterType) => {
     setLoading(true);
     try {
-      const res = await fetch("/api/register", {
-        method: "POST",
-        body: JSON.stringify(values),
+      await axios.post("/api/register", values, {
         headers: {
           "Content-Type": "application/json",
         },
       });
 
       setLoading(false);
-      if (!res.ok) {
-        throw new Error();
-      }
 
       signIn(undefined);
     } catch (error) {

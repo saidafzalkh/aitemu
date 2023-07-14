@@ -16,7 +16,7 @@ const CollectionNew = (): ReactElement => {
       </CardHeader>
       <CardFooter>
         <Button variant="secondary" className="w-full" asChild>
-          <Link href="/dashboard/collections/new">Create</Link>
+          <Link href="/collections/new">Create</Link>
         </Button>
       </CardFooter>
     </Card>
