@@ -7,6 +7,7 @@ import {
     Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 import { CollectionFormValidator, CollectionType } from "@/validators/new-collection-validator";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -23,8 +24,13 @@ const CollectionForm = () => {
     },
   });
 
+  const { toast } = useToast();
+
   function onSubmit(values: CollectionType) {
-    console.log(values);
+    toast({
+      title: "Hey!",
+      description: `Your data is ${JSON.stringify(values)}`,
+    });
   }
 
   return (
