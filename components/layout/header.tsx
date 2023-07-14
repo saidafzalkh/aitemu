@@ -13,6 +13,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {}
 
 const Header = async ({ className }: Props) => {
   const session = await getAuthSession();
+  console.log(session);
 
   return (
     <header

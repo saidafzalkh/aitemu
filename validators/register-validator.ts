@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-export const FormSchema = z.object({
+export const RegisterSchema = z.object({
+  name: z.string().nonempty({ message: "This field has to be filled." }),
   email: z
     .string()
     .min(1, { message: "This field has to be filled." })
@@ -11,4 +12,4 @@ export const FormSchema = z.object({
     .min(8, { message: "Too short" }),
 });
 
-export type FormType = z.infer<typeof FormSchema>;
+export type RegisterType = z.infer<typeof RegisterSchema>;

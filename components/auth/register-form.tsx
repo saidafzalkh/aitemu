@@ -2,7 +2,6 @@
 
 import { Loader2 } from "lucide-react";
 import { signIn } from "next-auth/react";
-import { usePathname } from "next/navigation";
 import { HTMLAttributes, ReactElement, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -13,43 +12,51 @@ import {
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/shadcn";
-import { FormSchema, FormType } from "@/validators/auth-validator";
+import { RegisterSchema, RegisterType } from "@/validators/register-validator";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 interface FormWrapperProps extends HTMLAttributes<HTMLDivElement> {}
 
-const AuthForm = (props: FormWrapperProps): ReactElement => {
+const RegisterForm = (props: FormWrapperProps): ReactElement => {
   const { toast } = useToast();
   const [loading, setLoading] = useState<boolean>(false);
 
-  const form = useForm<FormType>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<RegisterType>({
+    resolver: zodResolver(RegisterSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = async (values: FormType) => {
+  const onSubmit = async (values: RegisterType) => {
     setLoading(true);
     try {
-      await signIn("credentials", {
-        email: values.email,
-        password: values.password,
+      const res = await fetch("/api/register", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
+
+      setLoading(false);
+      if (!res.ok) {
+        throw new Error();
+      }
+
+      signIn(undefined);
     } catch (error) {
       toast({
         title: "Error!",
-        description:
-          "There was error sign in with Github. Try again or use another Provider",
+        description: "There was some Error try again",
         variant: "destructive",
       });
     } finally {
       setLoading(false);
     }
   };
-
-  const path = usePathname();
 
   return (
     <div className={cn("w-4/5 m-auto", props.className)}>
@@ -58,6 +65,23 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-4"
         >
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="User" {...field} />
+                </FormControl>
+                <FormDescription>
+                  This is your public display name.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <FormField
             control={form.control}
             name="email"
@@ -72,6 +96,7 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="password"
@@ -86,8 +111,9 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
               </FormItem>
             )}
           />
+
           <Button type="submit">
-            {loading ? <Loader2 className="animate-spin w-4 h-4" /> : "Sign In"}
+            {loading ? <Loader2 className="animate-spin w-4 h-4" /> : "Sign Up"}
           </Button>
         </form>
       </Form>
@@ -95,4 +121,4 @@ const AuthForm = (props: FormWrapperProps): ReactElement => {
   );
 };
 
-export default AuthForm;
+export default RegisterForm;
