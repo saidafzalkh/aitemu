@@ -14,25 +14,21 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { TOPICS } from "@/config";
 import { formatString } from "@/helpers/format-string";
 import { cn } from "@/lib/shadcn";
+import { CollectionType } from "@/validators/new-collection-validator";
 
 import { ScrollArea } from "./ui/scroll-area";
 
 type Props = {
-  form: UseFormReturn<
-    {
-      topic: string;
-      name: string;
-      description: string;
-    },
-    any,
-    undefined
-  >;
+  form: UseFormReturn<CollectionType>;
 };
 
 type topicType = { label: string; value: string };
 
 export function SelectTag({ form }: Props) {
-  const topics: topicType[] = TOPICS["en"].map((e) => ({
+  // TODO: Make it dynamic
+  const locale = "en";
+
+  const topics: topicType[] = TOPICS[locale].map((e) => ({
     label: e,
     value: formatString(e),
   }));
@@ -92,9 +88,7 @@ export function SelectTag({ form }: Props) {
               </Command>
             </PopoverContent>
           </Popover>
-          <FormDescription>
-            Choose a topic for your collection from exist list
-          </FormDescription>
+          <FormDescription>Choose a topic for your collection</FormDescription>
           <FormMessage />
         </FormItem>
       )}

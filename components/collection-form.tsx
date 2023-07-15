@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
@@ -8,23 +10,30 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { CollectionFormValidator, CollectionType } from "@/validators/new-collection-validator";
+import {
+    CollectionFormValidator, CollectionType, CustomFieldsType
+} from "@/validators/new-collection-validator";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import ItemSettings from "./item-settings";
 import { SelectTag } from "./select-tag";
 import { Textarea } from "./ui/textarea";
 
 const CollectionForm = () => {
+  const [customField, setCustomField] = useState<CustomFieldsType>([]);
+
   const form = useForm<CollectionType>({
     resolver: zodResolver(CollectionFormValidator),
     defaultValues: {
       name: "",
       description: "",
       topic: "",
+      custom_fields: [],
     },
   });
 
   const { toast } = useToast();
+  const route = useRouter();
 
   function onSubmit(values: CollectionType) {
     toast({
@@ -46,7 +55,7 @@ const CollectionForm = () => {
                 <FormControl>
                   <Input placeholder="Enter the name" {...field} />
                 </FormControl>
-                <FormDescription>Enter your collection name</FormDescription>
+                <FormDescription>Name your collection</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -61,16 +70,22 @@ const CollectionForm = () => {
                 <FormControl>
                   <Textarea placeholder="Enter the description" {...field} />
                 </FormControl>
-                <FormDescription>
-                  Describe your collection, you can use markdown.
-                </FormDescription>
+                <FormDescription>Describe your collection</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
 
           <SelectTag form={form} />
-          <Button type="submit">Submit</Button>
+
+          <ItemSettings />
+
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={() => route.back()}>
+              Cancel
+            </Button>
+            <Button type="submit">Submit</Button>
+          </div>
         </form>
       </Form>
     </div>
