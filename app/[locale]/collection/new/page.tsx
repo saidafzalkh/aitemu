@@ -13,7 +13,7 @@ const Page = async () => {
   if (!session?.user) redirect("/sign-in");
 
   return (
-    <div className="container">
+    <div>
       <H3>Create New Collection</H3>
 
       <Alert className="mt-5">

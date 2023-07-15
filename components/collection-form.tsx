@@ -28,7 +28,7 @@ const CollectionForm = () => {
       name: "",
       description: "",
       topic: "",
-      custom_fields: [],
+      custom_fields: customField,
     },
   });
 
