@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ReactElement } from "react";
 
-import RegisterForm from "@/components/auth/register-form";
+import SignUp from "@/components/auth/sign-up";
 import H3 from "@/components/typography/h3";
 import Small from "@/components/typography/small";
 import { Button } from "@/components/ui/button";
@@ -10,7 +10,7 @@ const Page = (): ReactElement => {
   return (
     <>
       <H3>Create an account with</H3>
-      <RegisterForm />
+      <SignUp />
       <Small className="w-5/6 md:w-3/4 text-center">
         By continuing, you are setting up an Aitemu account and agree to our
         <Button size="sm" variant="link">

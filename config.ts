@@ -1,3 +1,5 @@
+import { FieldsAsType } from "./validators/new-collection-validator";
+
 export const TOPICS = {
   en: [
     "Books",
@@ -105,3 +107,16 @@ export const TOPICS = {
     "Прочее",
   ] as const,
 };
+
+export const FIXED_FIELDS: FieldsAsType = [
+  { name: "id", type: "number" },
+  { name: "name", type: "string" },
+  { name: "tags", type: "text" },
+];
+
+export const CUSTOM_FIELDS_TYPES = [
+  "string",
+  "text",
+  "number",
+  "date",
+] as const;

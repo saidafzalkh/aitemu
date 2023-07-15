@@ -1,7 +1,7 @@
 import { Lightbulb } from "lucide-react";
 import { redirect } from "next/navigation";
 
-import CollectionForm from "@/components/collection-form";
+import CollectionForm from "@/components/forms/create-collection/collection-form";
 import H3 from "@/components/typography/h3";
 import { LI, OL } from "@/components/typography/list";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";

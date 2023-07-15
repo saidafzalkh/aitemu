@@ -100,7 +100,7 @@ const RegisterForm = (props: FormWrapperProps): ReactElement => {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input type="password" {...field} />
+                  <Input placeholder="********" type="password" {...field} />
                 </FormControl>
                 <FormDescription>Enter your password.</FormDescription>
                 <FormMessage />

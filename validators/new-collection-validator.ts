@@ -1,15 +1,17 @@
 import { z } from "zod";
 
-export const fieldTypeEnum = z.enum(["string", "text", "number", "date"]);
-
-const customFields = z
+const FieldsSchema = z
   .object({
-    name: z.string(),
-    type: fieldTypeEnum,
+    name: z
+      .string()
+      .nonempty({ message: "Enter a name for this field or remove it" }),
+    type: z
+      .string()
+      .nonempty({ message: "Select type for this field or remove it" }),
   })
   .array();
 
-export const CollectionFormValidator = z.object({
+export const CollectionFormSchema = z.object({
   name: z
     .string()
     .min(3, { message: "Collection name must be at least 3 characters." })
@@ -28,9 +30,9 @@ export const CollectionFormValidator = z.object({
       required_error: "Please select a topic.",
     })
     .nonempty({ message: "Please select a topic." }),
-  custom_fields: customFields,
+  fields: FieldsSchema,
 });
 
-export type CustomFieldsType = z.infer<typeof customFields>;
+export type FieldsAsType = z.infer<typeof FieldsSchema>;
 
-export type CollectionType = z.infer<typeof CollectionFormValidator>;
+export type CollectionType = z.infer<typeof CollectionFormSchema>;

@@ -16,7 +16,7 @@ import { formatString } from "@/helpers/format-string";
 import { cn } from "@/lib/shadcn";
 import { CollectionType } from "@/validators/new-collection-validator";
 
-import { ScrollArea } from "./ui/scroll-area";
+import { ScrollArea } from "../../ui/scroll-area";
 
 type Props = {
   form: UseFormReturn<CollectionType>;
@@ -24,7 +24,7 @@ type Props = {
 
 type topicType = { label: string; value: string };
 
-export function SelectTag({ form }: Props) {
+export function SelectTopic({ form }: Props) {
   // TODO: Make it dynamic
   const locale = "en";
 

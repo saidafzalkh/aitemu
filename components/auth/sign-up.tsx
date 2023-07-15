@@ -7,6 +7,7 @@ import P from "../typography/p";
 import { Button } from "../ui/button";
 import { GithubButton, GoogleButton } from "./auth-buttons";
 import AuthForm from "./auth-form";
+import RegisterForm from "./register-form";
 
 interface SignProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -29,7 +30,7 @@ const SignUp = (props: SignProps): ReactElement => {
         </div>
       </div>
 
-      <AuthForm />
+      <RegisterForm />
 
       <P className=" text-center">
         Already have an account?
