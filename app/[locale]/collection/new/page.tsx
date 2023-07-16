@@ -16,9 +16,13 @@ const Page = async () => {
     <div>
       <H3>Create New Collection</H3>
 
-      <Alert className="mt-5">
+      <CollectionForm user={session.user} />
+
+      <Alert className="mt-10">
         <Lightbulb className="h-5 w-5" />
-        <AlertTitle>To create a collection, follow these steps:</AlertTitle>
+        <AlertTitle>
+          If you wondering how to field form, follow these steps:
+        </AlertTitle>
         <AlertDescription>
           <OL>
             <LI>
@@ -26,16 +30,22 @@ const Page = async () => {
               your collection that reflects its theme or purpose.
             </LI>
             <LI>
-              Describe your collection: Write a brief description that provides
-              an overview of what your collection is about. Include key details
-              such as the significance, historical context, or artistic value of
-              the items in your collection.
+              Describe your collection using the text editor: Write a brief
+              description that provides an overview of what your collection is
+              about. You can use the text editor options to format your text,
+              add headings, lists, and other formatting elements to make it
+              visually appealing.
             </LI>
             <LI>
               Choose a topic for your collection: Decide on the central theme or
               topic that your collection will revolve around. It could be
               anything from art, literature, sports memorabilia, vintage
               fashion, or natural history.
+            </LI>
+            <LI>
+              Optional: Upload an image as the collection cover: You can upload
+              one image that represents your collection. This image will be
+              displayed prominently on the collection page or thumbnail view.
             </LI>
             <LI>
               Set up custom fields for your items table: Determine the specific
@@ -48,8 +58,6 @@ const Page = async () => {
           </OL>
         </AlertDescription>
       </Alert>
-
-      <CollectionForm />
     </div>
   );
 };

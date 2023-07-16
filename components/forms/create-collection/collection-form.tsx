@@ -1,7 +1,8 @@
 "use client";
 
+import { User } from "next-auth";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
@@ -17,14 +18,18 @@ import InputDescription from "./input-description";
 import InputName from "./input-name";
 import { SelectTopic } from "./select-topic";
 
-const CollectionForm = () => {
+import type EditorJS from "@editorjs/editorjs";
+
+const CollectionForm = ({ user }: { user: User }) => {
   const [customFields, setCustomFields] = useState<FieldsAsType>([]);
+  const editorRef = useRef<EditorJS>();
 
   const form = useForm<CollectionType>({
     resolver: zodResolver(CollectionFormSchema),
     defaultValues: {
+      userId: user.id,
+      description: null,
       name: "",
-      description: "",
       topic: "",
       fields: customFields,
     },
@@ -33,11 +38,17 @@ const CollectionForm = () => {
   const { toast } = useToast();
   const route = useRouter();
 
-  function onSubmit(values: CollectionType) {
-    console.log(values);
+  async function onSubmit(values: CollectionType) {
+    const payload: CollectionType = {
+      ...values,
+      description: await editorRef.current?.save(),
+    };
+
+    console.log(payload);
+
     toast({
-      title: "Hey!",
-      description: `Your data is ${JSON.stringify(values)}`,
+      title: "Hey! Sorry!",
+      description: `But for now you cant create a collection...`,
     });
   }
 
@@ -46,7 +57,7 @@ const CollectionForm = () => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <InputName form={form} />
-          <InputDescription form={form} />
+          <InputDescription editorRef={editorRef} form={form} />
           <SelectTopic form={form} />
           <CustomFields
             form={form}

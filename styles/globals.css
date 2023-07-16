@@ -82,3 +82,13 @@
   color: hsl(var(--secondary-foreground));
   fill: hsl(var(--secondary-foreground));
 }
+
+/* EditorJs custom style */
+.codex-editor__redactor {
+  padding-bottom: 150px !important;
+}
+
+.link-tool__description,
+.link-tool__title {
+  color: #1b1b1b !important;
+}

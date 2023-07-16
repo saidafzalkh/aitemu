@@ -109,7 +109,6 @@ export const TOPICS = {
 };
 
 export const FIXED_FIELDS: FieldsAsType = [
-  { name: "id", type: "number" },
   { name: "name", type: "string" },
   { name: "tags", type: "text" },
 ];
@@ -120,3 +119,11 @@ export const CUSTOM_FIELDS_TYPES = [
   "number",
   "date",
 ] as const;
+
+export const SELECT_FIELD_OPTIONS = [
+  { value: "number", label: "Number" },
+  { value: "string", label: "String" },
+  { value: "text", label: "Text" },
+  { value: "boolean", label: "Checkbox" },
+  { value: "date", label: "Date" },
+];

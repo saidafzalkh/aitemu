@@ -4,24 +4,13 @@ import { ReactElement } from "react";
 import { UseFormReturn } from "react-hook-form";
 
 import {
-    Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage
+    FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { CollectionType } from "@/validators/new-collection-validator";
 
 interface Props {
-  form: UseFormReturn<
-    {
-      name: string;
-      description: string;
-      topic: string;
-      fields: {
-        name: string;
-        type: string;
-      }[];
-    },
-    any,
-    undefined
-  >;
+  form: UseFormReturn<CollectionType>;
 }
 
 const InputName = ({ form }: Props): ReactElement => {

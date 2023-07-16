@@ -10,41 +10,24 @@ import { Input } from "@/components/ui/input";
 import {
     Select, SelectContent, SelectItem, SelectTrigger, SelectValue
 } from "@/components/ui/select";
-import { FieldsAsType } from "@/validators/new-collection-validator";
+import { SELECT_FIELD_OPTIONS } from "@/config";
+import { CollectionType, FieldsAsType } from "@/validators/new-collection-validator";
 
 import FixedFields from "./fixed-fields";
 
 interface Props {
-  form: UseFormReturn<
-    {
-      name: string;
-      description: string;
-      topic: string;
-      fields: {
-        name: string;
-        type: string;
-      }[];
-    },
-    any,
-    undefined
-  >;
+  form: UseFormReturn<CollectionType>;
   customFields: FieldsAsType;
   setCustomFields: Dispatch<SetStateAction<FieldsAsType>>;
 }
-
-const selectOptions = [
-  { value: "number", label: "Number" },
-  { value: "string", label: "String" },
-  { value: "text", label: "Text" },
-  { value: "boolean", label: "Checkbox" },
-  { value: "date", label: "Date" },
-];
 
 const CustomFields = ({
   form,
   customFields,
   setCustomFields,
 }: Props): ReactElement => {
+  //
+
   const addCustomField = () => {
     setCustomFields((current) => [...current, { name: "", type: "number" }]);
   };
@@ -94,7 +77,7 @@ const CustomFields = ({
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {selectOptions.map((field) => (
+                    {SELECT_FIELD_OPTIONS.map((field) => (
                       <SelectItem key={field.value} value={field.value}>
                         <span>{field.label}</span>
                       </SelectItem>
