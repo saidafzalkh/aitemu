@@ -25,6 +25,7 @@ export const CollectionFormSchema = z.object({
     })
     .nonempty({ message: "Please select a topic." }),
   fields: FieldsSchema,
+  image: z.string(),
 });
 
 export type FieldsAsType = z.infer<typeof FieldsSchema>;

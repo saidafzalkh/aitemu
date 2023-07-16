@@ -2,7 +2,7 @@ import { Lightbulb } from "lucide-react";
 import { redirect } from "next/navigation";
 
 import CollectionForm from "@/components/forms/create-collection/collection-form";
-import H3 from "@/components/typography/h3";
+import H2 from "@/components/typography/h2";
 import { LI, OL } from "@/components/typography/list";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { getAuthSession } from "@/lib/auth";
@@ -14,7 +14,7 @@ const Page = async () => {
 
   return (
     <div>
-      <H3>Create New Collection</H3>
+      <H2>Create New Collection</H2>
 
       <CollectionForm user={session.user} />
 

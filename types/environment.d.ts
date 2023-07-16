@@ -15,6 +15,9 @@ declare global {
       NEXTAUTH_URL: string;
 
       NODE_ENV: "development" | "production";
+
+      UPLOADTHING_SECRET: string;
+      UPLOADTHING_APP_ID: string;
     }
   }
 }
