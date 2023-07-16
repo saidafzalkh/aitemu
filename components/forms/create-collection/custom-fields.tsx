@@ -47,7 +47,6 @@ const CustomFields = ({
 }: Props): ReactElement => {
   const addCustomField = () => {
     setCustomFields((current) => [...current, { name: "", type: "number" }]);
-    console.log(customFields);
   };
 
   const deleteCustomField = (index: number) => {
