@@ -6,10 +6,10 @@ import { UseFormReturn } from "react-hook-form";
 import {
     FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage
 } from "@/components/ui/form";
+import { toast } from "@/hooks/use-toast";
 import { CollectionType } from "@/validators/new-collection-validator";
 
 import type EditorJS from "@editorjs/editorjs";
-
 interface Props {
   form: UseFormReturn<CollectionType>;
   editorRef: MutableRefObject<EditorJS | undefined>;
@@ -54,6 +54,19 @@ const InputDescription = ({ form, editorRef }: Props): ReactElement => {
       });
     }
   }, []);
+
+  useEffect(() => {
+    if (Object.keys(form.formState).length) {
+      for (const [_key, value] of Object.entries(form.formState)) {
+        value;
+        toast({
+          title: "Something went wrong.",
+          description: "Error: " + (value as { message: string }).message,
+          variant: "destructive",
+        });
+      }
+    }
+  }, [form.formState]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {

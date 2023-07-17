@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { User } from "next-auth";
 import { useRouter } from "next/navigation";
@@ -14,6 +15,7 @@ import {
     CollectionFormSchema, CollectionType, FieldsAsType
 } from "@/validators/new-collection-validator";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 
 import CustomFields from "./custom-fields";
 import InputDescription from "./input-description";
@@ -42,6 +44,20 @@ const CollectionForm = ({ user }: { user: User }) => {
 
   const { toast } = useToast();
   const route = useRouter();
+
+  const {} = useMutation({
+    mutationFn: async (payload: CollectionType) => {
+      const { data } = await axios.post("/api/collection/create", payload);
+      return data;
+    },
+    onError: () => {
+      return toast({
+        title: "Something went wrong.",
+        description: "Your post was not published. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
 
   async function onSubmit(values: CollectionType) {
     setLoading(true);

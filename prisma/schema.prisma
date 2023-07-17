@@ -67,7 +67,7 @@ model User {
 model Collection {
   id          String  @id @default(cuid())
   name        String
-  description String?
+  description Json?
   owner       User    @relation(fields: [ownerId], references: [id])
   ownerId     String
   topic       String?
@@ -76,20 +76,26 @@ model Collection {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("collections")
 }
 
 model Item {
   id   String @id @default(cuid())
   name String
   tags Tag[]
-  data Json
+  data Json?
+
+  @@map("items")
 }
 
 model Tag {
   id     String  @id @default(cuid())
   name   String
-  Item   Item?   @relation(fields: [itemId], references: [id])
+  item   Item?   @relation(fields: [itemId], references: [id])
   itemId String?
+
+  @@map("tags")
 }
 
 model Like {
@@ -98,4 +104,6 @@ model Like {
   userId String
 
   createdAt DateTime @default(now())
+
+  @@map("likes")
 }
