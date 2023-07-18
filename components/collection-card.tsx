@@ -1,18 +1,26 @@
+import Link from "next/link";
 import { ReactElement } from "react";
 
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Button } from "./ui/button";
 
-const CollectionCard = (): ReactElement => {
+import type { Collection } from "@prisma/client";
+interface Props {
+  data: Collection;
+}
+
+const CollectionCard = ({ data }: Props): ReactElement => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Bookshelf: Manga</CardTitle>
+        <CardTitle>{data.name}</CardTitle>
         <CardDescription>Open collection to view details...</CardDescription>
       </CardHeader>
       <CardFooter>
-        <Button className="w-full">Open collection</Button>
+        <Button className="w-full" asChild>
+          <Link href={`/collection/${data.id}`}>Open collection</Link>
+        </Button>
       </CardFooter>
     </Card>
   );

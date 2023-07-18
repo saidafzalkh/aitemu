@@ -3,14 +3,19 @@ import { redirect } from "next/navigation";
 
 import CollectionCard from "@/components/collection-card";
 import CollectionNew from "@/components/collection-new";
+import DashboardToolbar from "@/components/dashboard-toolbar";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Input } from "@/components/ui/input";
 import { getAuthSession } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 
 const Page = async () => {
   const session = await getAuthSession();
 
   if (!session?.user) redirect("/sign-in");
+
+  const collectionsList = await prisma.collection.findMany({
+    where: { ownerId: session.user.id },
+  });
 
   return (
     <div>
@@ -23,12 +28,12 @@ const Page = async () => {
         </AlertDescription>
       </Alert>
 
-      <div className="mt-5">
-        <Input className="md:w-3/4" placeholder="search collections..." />
-      </div>
+      <DashboardToolbar />
 
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5">
-        <CollectionCard />
+        {collectionsList.map((collection) => (
+          <CollectionCard data={collection} key={collection.id} />
+        ))}
         <CollectionNew />
       </div>
     </div>

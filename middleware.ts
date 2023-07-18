@@ -9,6 +9,7 @@ const publicPages = [
   "/sign-up",
   "/privacy-policy",
   "/user-agreements",
+  "/collection(.*)",
 ];
 
 const intlMiddleware = createIntlMiddleware({
