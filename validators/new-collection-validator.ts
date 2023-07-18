@@ -12,7 +12,6 @@ const FieldsSchema = z
   .array();
 
 export const CollectionFormSchema = z.object({
-  userId: z.string(),
   name: z
     .string()
     .min(3, { message: "Collection name must be at least 3 characters." })

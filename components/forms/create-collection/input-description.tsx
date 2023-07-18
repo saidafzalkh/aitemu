@@ -56,19 +56,6 @@ const InputDescription = ({ form, editorRef }: Props): ReactElement => {
   }, []);
 
   useEffect(() => {
-    if (Object.keys(form.formState).length) {
-      for (const [_key, value] of Object.entries(form.formState)) {
-        value;
-        toast({
-          title: "Something went wrong.",
-          description: "Error: " + (value as { message: string }).message,
-          variant: "destructive",
-        });
-      }
-    }
-  }, [form.formState]);
-
-  useEffect(() => {
     if (typeof window !== "undefined") {
       setIsMounted(true);
     }

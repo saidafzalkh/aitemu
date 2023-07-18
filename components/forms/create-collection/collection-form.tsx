@@ -1,8 +1,7 @@
 "use client";
 
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Loader2 } from "lucide-react";
-import { User } from "next-auth";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -24,7 +23,8 @@ import { SelectTopic } from "./select-topic";
 import UploadImage from "./upload-image";
 
 import type EditorJS from "@editorjs/editorjs";
-const CollectionForm = ({ user }: { user: User }) => {
+const CollectionForm = () => {
+  const router = useRouter();
   const [customFields, setCustomFields] = useState<FieldsAsType>([]);
   const [image, setImage] = useState<File>();
   const [loading, setLoading] = useState<boolean>(false);
@@ -33,7 +33,6 @@ const CollectionForm = ({ user }: { user: User }) => {
   const form = useForm<CollectionType>({
     resolver: zodResolver(CollectionFormSchema),
     defaultValues: {
-      userId: user.id,
       description: null,
       name: "",
       topic: "",
@@ -45,45 +44,74 @@ const CollectionForm = ({ user }: { user: User }) => {
   const { toast } = useToast();
   const route = useRouter();
 
-  const {} = useMutation({
+  const { mutate: createCollection, isLoading } = useMutation({
     mutationFn: async (payload: CollectionType) => {
       const { data } = await axios.post("/api/collection/create", payload);
+      console.log(data);
       return data;
     },
-    onError: () => {
-      return toast({
-        title: "Something went wrong.",
-        description: "Your post was not published. Please try again.",
+    onError: (err) => {
+      if (err instanceof AxiosError) {
+        if (err.response?.status === 409) {
+          return toast({
+            title:
+              "Collection with this name already exists in your dashboard.",
+            description: "Please choose a different name.",
+            variant: "destructive",
+          });
+        }
+
+        if (err.response?.status === 422) {
+          return toast({
+            title: "Invalid collection data.",
+            description: "Please field form by instruction below",
+            variant: "destructive",
+          });
+        }
+      }
+
+      toast({
+        title: "There was an error.",
+        description: "Could not create collection try letter.",
         variant: "destructive",
+      });
+    },
+    onSuccess: (data) => {
+      router.push(`/collection/${data.id}`);
+
+      return toast({
+        description: "Your collection has been created",
       });
     },
   });
 
   async function onSubmit(values: CollectionType) {
     setLoading(true);
-
     try {
-      const [res] = await uploadFiles({
-        files: [image as File],
-        endpoint: "imageUploader",
-      });
+      if (image) {
+        const [res] = await uploadFiles({
+          files: [image as File],
+          endpoint: "imageUploader",
+        });
+        values.image = res.fileUrl;
+      }
 
       const payload: CollectionType = {
         ...values,
         description: await editorRef.current?.save(),
-        image: res.fileUrl,
       };
 
+      createCollection(payload);
       console.log(payload);
 
       toast({
-        title: "Hey! Sorry!",
-        description: `But for now you cant create a collection...`,
+        title: "Hey!",
+        description: `Your Response sended`,
       });
     } catch (error) {
       toast({
-        title: "Hey! Sorry!",
-        description: `something wrong...`,
+        title: "Error!",
+        description: `Something went wrong wile sending response try again.`,
         variant: "destructive",
       });
       console.error(error);
@@ -114,8 +142,8 @@ const CollectionForm = ({ user }: { user: User }) => {
             >
               Cancel
             </Button>
-            <Button type="submit" disabled={loading}>
-              {loading ? (
+            <Button type="submit" disabled={loading || isLoading}>
+              {loading || isLoading ? (
                 <Loader2 className="animate-spin w-4 h-4" />
               ) : (
                 "Create"

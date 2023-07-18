@@ -1,7 +1,7 @@
 "use client";
 
 import { UploadCloud } from "lucide-react";
-import React, { Dispatch, SetStateAction, useCallback, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { UseFormReturn } from "react-hook-form";
 
@@ -9,7 +9,6 @@ import {
     FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { uploadFiles } from "@/lib/uploadthing";
 import { CollectionType } from "@/validators/new-collection-validator";
 
 interface Props {
@@ -23,8 +22,15 @@ const UploadImage = ({ form, setImage }: Props) => {
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     setUploaded(true);
-    setImage(acceptedFiles[0]);
-    setFileName(acceptedFiles[0].name as string);
+    if (
+      typeof acceptedFiles != "undefined" &&
+      acceptedFiles != null &&
+      acceptedFiles.length != null &&
+      acceptedFiles.length > 0
+    ) {
+      setImage(acceptedFiles[0]);
+      setFileName((acceptedFiles[0].name as string) || "");
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });

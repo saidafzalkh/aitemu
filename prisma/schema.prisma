@@ -70,7 +70,7 @@ model Collection {
   description Json?
   owner       User    @relation(fields: [ownerId], references: [id])
   ownerId     String
-  topic       String?
+  topic       String
   image       String?
   fields      Json?
 
