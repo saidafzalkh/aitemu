@@ -70,7 +70,9 @@ const Editor = ({ editorRef, initialData }: Props): ReactElement => {
   }, [isMounted, initializeEditor]);
 
   return (
-    <div id="editor" className="border p-2 rounded-sm text-sm max-w-full" />
+    <div className="prose prose-stone dark:prose-invert">
+      <div id="editor" className="border p-2 rounded-sm text-sm max-w-full" />
+    </div>
   );
 };
 

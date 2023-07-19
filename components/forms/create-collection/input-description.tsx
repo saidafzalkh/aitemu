@@ -23,7 +23,7 @@ const InputDescription = ({ form, editorRef }: Props): ReactElement => {
       render={() => (
         <FormItem>
           <FormLabel>Description</FormLabel>
-          <FormControl className="prose prose-stone dark:prose-invert">
+          <FormControl>
             <Editor editorRef={editorRef} />
           </FormControl>
           <FormDescription>Describe your collection</FormDescription>
