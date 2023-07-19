@@ -73,6 +73,7 @@ model Collection {
   topic       String
   image       String?
   fields      Json?
+  items       Item[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -81,10 +82,12 @@ model Collection {
 }
 
 model Item {
-  id   String @id @default(cuid())
-  name String
-  tags Tag[]
-  data Json?
+  id           String      @id @default(cuid())
+  name         String
+  tags         Tag[]
+  data         Json?
+  Collection   Collection? @relation(fields: [collectionId], references: [id])
+  collectionId String?
 
   @@map("items")
 }
