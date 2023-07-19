@@ -15,6 +15,7 @@ const Page = async () => {
 
   const collectionsList = await prisma.collection.findMany({
     where: { ownerId: session.user.id },
+    orderBy: { createdAt: "desc" },
   });
 
   return (
