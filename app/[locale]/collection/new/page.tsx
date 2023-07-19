@@ -16,7 +16,7 @@ const Page = async () => {
     <div>
       <H2>Create New Collection</H2>
 
-      <CollectionForm user={session.user} />
+      <CollectionForm />
 
       <Alert className="mt-10">
         <Lightbulb className="h-5 w-5" />
