@@ -37,10 +37,11 @@ const CollectionInfo = async ({ collection }: Props) => {
       <div className="w-full">
         <AspectRatio ratio={14 / 4}>
           <Image
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             fill
+            className="rounded-md object-cover"
             src={image}
             alt={collection.name}
-            className="rounded-md object-cover"
           />
         </AspectRatio>
       </div>

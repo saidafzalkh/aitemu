@@ -26,7 +26,7 @@ const TopCollections = async (): Promise<ReactElement> => {
   return (
     <section className="my-20">
       <H2>Top Largest Collections</H2>
-      <div className="mt-5 flex flex-wrap gap-4">
+      <div className="mt-5 flex flex-wrap gap-4 justify-between">
         {collections.map((collection) => (
           <CollectionCardMain key={collection.id} collection={collection} />
         ))}
