@@ -11,8 +11,8 @@ export default function Page() {
 
   return (
     <>
-      <Header className="z-10" />
       <section className="container min-h-screen ">
+      <Header className="z-10" />
         <Hero />
         <TopCollections />
         <About />
