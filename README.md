@@ -59,7 +59,7 @@ git checkout -b feature/your-feature-name
 
 ## Feedback and Support
 
-If you encounter any issues while using aitemu or have suggestions for improvements, please [submit an issue](https://github.com/saidafzalkh/aitemu/issues). We appreciate your feedback and will address your concerns promptly.
+If you encounter any issues while using aitemu or have suggestions for improvements, please [submit an issue](https://github.com/saidafzalkh/aitemu/issues).
 
 ## License
 
